@@ -1,0 +1,36 @@
+.FardoTools-button-cancel {
+    background-color: red;
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    padding: 3px;
+    transition: all .5s;
+}
+.FardoTools-button-cancel:active {
+    border: 1px solid transparent;
+}
+.FardoTools-button-cancel:hover {
+    background-color: crimson;
+    cursor: pointer;
+    text-decoration: underline;
+}
+/*---------------------------------------------------------------------*/
+.FardoTools-button-confirm {
+    background-color: limegreen;
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    padding: 3px;
+    transition: all .5s;
+}
+.FardoTools-button-confirm:active {
+    border: 1px solid transparent;
+}
+.FardoTools-button-confirm:hover {
+    background-color: lime;
+    cursor: pointer;
+    text-decoration: underline;
+}
+/*---------------------------------------------------------------------*/
