@@ -1,4 +1,10 @@
 <?php
+/*
+
+*RECOMENDADO DEIXAR ESTE ARQUIVO NA MESMA PASTA
+DAS OUTRAS BIBLIOTECAS DO Fardo_ToolBox!!!
+
+*/
 class Fardo_ToolBox
 {
     public function js($javascript)
@@ -45,8 +51,9 @@ class Fardo_ToolBox
             curl_setopt($ch, CURLOPT_URL, $github_url);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            return curl_exec($ch);
+            $data = curl_exec($ch);
             curl_close($ch);
+            return $data;
         } catch (Exception) {
             throw "Error on request GitHub";
         }
