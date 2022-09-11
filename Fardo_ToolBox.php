@@ -14,7 +14,7 @@ class Fardo_ToolBox
         if ($close == true) {
             if (is_array($value)) {
                 $string = "";
-                for($c = 0; $c < count($value); $c++) $string .= $value[$c]."<br>";
+                for ($c = 0; $c < count($value); $c++) $string .= $value[$c] . "<br>";
                 echo "<$tag $attributes>$string</$tag>";
             } else {
                 echo "<$tag $attributes>$value</$tag>";
@@ -37,6 +37,19 @@ class Fardo_ToolBox
                 </body>
             </html>
             ";
+    }
+    function getGitHub($github_url)
+    {
+        try {
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $github_url);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            return curl_exec($ch);
+            curl_close($ch);
+        } catch (Exception) {
+            throw "Error on request GitHub";
+        }
     }
 };
 $FardoTools = new Fardo_ToolBox;
