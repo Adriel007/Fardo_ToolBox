@@ -44,27 +44,29 @@ class Fardo_ToolBox {
         if (where == "") document.body.appendChild(el);
         else where.appendChild(el);
     }
-	collider(obj_1, obj_2, direction) {
-		if (direction.toLowerCase() == "x") {
-			let x1 = parseFloat(obj_1.style.left, 10);
-			let x2 = parseFloat(obj_2.style.left, 10);
-			let w1 = parseFloat(obj_1.style.width, 10);
-			let w2 = parseFloat(obj_2.style.width, 10);
-			return ((x1 + w1 / 2) >= (x2 - w2 / 2) && (x1 - w1 / 2) <= (x2 + w2 / 2));
-		}
-		else if (direction.toLowerCase() == "y") {
-			let y1 = parseFloat(obj_1.style.top, 10);
-			let y2 = parseFloat(obj_2.style.top, 10);
-			let h1 = parseFloat(obj_1.style.height, 10);
-			let h2 = parseFloat(obj_2.style.height, 10);
-			return ((y1 + h1 / 2) >= (y2 - h2 / 2) && (y1 - h1 / 2) <= (y2 + h2 / 2));
-		}
-		else return undefined;
-	}
-    async typingEffect(container, text, delay) {
-        text = "" + text;
+    collider(obj_1, obj_2, direction) {
+        if (direction.toLowerCase() == "x") {
+            let x1 = parseFloat(obj_1.style.left, 10);
+            let x2 = parseFloat(obj_2.style.left, 10);
+            let w1 = parseFloat(obj_1.style.width, 10);
+            let w2 = parseFloat(obj_2.style.width, 10);
+            return ((x1 + w1 / 2) >= (x2 - w2 / 2) && (x1 - w1 / 2) <= (x2 + w2 / 2));
+        }
+        else if (direction.toLowerCase() == "y") {
+            let y1 = parseFloat(obj_1.style.top, 10);
+            let y2 = parseFloat(obj_2.style.top, 10);
+            let h1 = parseFloat(obj_1.style.height, 10);
+            let h2 = parseFloat(obj_2.style.height, 10);
+            return ((y1 + h1 / 2) >= (y2 - h2 / 2) && (y1 - h1 / 2) <= (y2 + h2 / 2));
+        }
+        else return undefined;
+    }
+    async typingEffect(container = document.body, prefix = "", text = "typing effect", sufix = "", delay = 1000) {
+        intro.textContent = prefix;
+        await this.delay(delay);
         for (let c = 0; c < text.length; c++) {
-            container.textContent += text[c];
+            intro.textContent = intro.textContent.replace(sufix, "");
+            container.textContent += text[c] + sufix;
             await this.delay(delay);
         }
     }
