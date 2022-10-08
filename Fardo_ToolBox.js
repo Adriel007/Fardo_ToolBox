@@ -61,7 +61,16 @@ class Fardo_ToolBox {
         }
         else return undefined;
     }
-    async typingEffect(container = document.body, prefix = "", text = "typing effect", sufix = "", delay = 1000) {
+    async typingEffect(container = document.body, prefix = "", text = "typing effect", sufix = "", delay = 1000, sufixBlink = true, sufixBlinkDelay = 500) {
+        const blinkEffect = () => {
+            let c = 1;
+            container.textContent = container.textContent.slice(0, -1);
+            setInterval(() => {
+                if (c % 2 == 0) container.textContent = container.textContent.slice(0, -1);
+                else container.textContent += sufix;
+                c++;
+            }, sufixBlinkDelay);
+        };
         container.textContent = prefix;
         await this.delay(delay);
         for (let c = 0; c < text.length; c++) {
@@ -69,6 +78,7 @@ class Fardo_ToolBox {
             container.textContent += text[c] + sufix;
             await this.delay(delay);
         }
+        if (sufixBlink == true) blinkEffect();
     }
     delay(miliseconds) {
         return new Promise(resolve => setTimeout(resolve, miliseconds));
