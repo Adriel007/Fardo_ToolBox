@@ -83,5 +83,9 @@ class Fardo_ToolBox {
     delay(miliseconds) {
         return new Promise(resolve => setTimeout(resolve, miliseconds));
     }
+    isInScreen(element) {
+        element = element.getBoundingClientRect();
+        return (element.top >= 0 && element.left >= 0 && element.bottom <= (window.innerHeight || document.documentElement.clientHeight) && element.right <= (window.innerWidth || document.documentElement.clientWidth));
+    }
 };
 const FardoTools = new Fardo_ToolBox;
