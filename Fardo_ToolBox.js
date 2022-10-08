@@ -62,10 +62,10 @@ class Fardo_ToolBox {
         else return undefined;
     }
     async typingEffect(container = document.body, prefix = "", text = "typing effect", sufix = "", delay = 1000) {
-        intro.textContent = prefix;
+        container.textContent = prefix;
         await this.delay(delay);
         for (let c = 0; c < text.length; c++) {
-            intro.textContent = intro.textContent.replace(sufix, "");
+            container.textContent = container.textContent.replace(sufix, "");
             container.textContent += text[c] + sufix;
             await this.delay(delay);
         }
