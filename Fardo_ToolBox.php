@@ -15,17 +15,17 @@ class Fardo_ToolBox
     {
         echo "<style>$css</style>";
     }
-    function html($tag, $attributes, $value, $close)
+    function html($tag, $attributesAndValues, $inner, $close)
     {
         if ($close == true) {
-            if (is_array($value)) {
+            if (is_array($inner)) {
                 $string = "";
-                for ($c = 0; $c < count($value); $c++) $string .= $value[$c] . "<br>";
-                echo "<$tag $attributes>$string</$tag>";
+                for ($c = 0; $c < count($inner); $c++) $string .= $inner[$c] . "<br>";
+                echo "<$tag $attributesAndValues>$string</$tag>";
             } else {
-                echo "<$tag $attributes>$value</$tag>";
+                echo "<$tag $attributesAndValues>$inner</$tag>";
             }
-        } else echo "<$tag $attributes>";
+        } else echo "<$tag $attributesAndValues>";
     }
     function defaultHtml($iconSrc, $title, $styleSrc, $javascriptSrc)
     {
