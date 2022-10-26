@@ -29,6 +29,8 @@ class Fardo_ToolBox
     }
     function defaultHtml($iconSrc, $title, $styleSrc, $javascriptSrc)
     {
+        if ($iconSrc == null || $iconSrc == "") $iconSrc = "#";
+        if ($title == null || $title == "") $title = "Default Title";
         if ($styleSrc == null || $styleSrc == "") $styleSrc = "#";
         if ($javascriptSrc == null || $javascriptSrc == "") $javascriptSrc = "#";
         echo "<!DOCTYPE html>
