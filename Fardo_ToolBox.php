@@ -27,21 +27,23 @@ class Fardo_ToolBox
             }
         } else echo "<$tag $attributes>";
     }
-    function defaultHtml($title, $styleSrc, $javascriptSrc)
+    function defaultHtml($icon, $title, $styleSrc, $javascriptSrc)
     {
         if ($styleSrc == null || $styleSrc == "") $styleSrc = "#";
         if ($javascriptSrc == null || $javascriptSrc == "") $javascriptSrc = "#";
         echo "<!DOCTYPE html>
-            <html>
-                <head>
-                    <title>$title</title>
-                    <link rel='stylesheet' href='$styleSrc.css'>
-                </head>
-                <body>
-
-                    <script src='$javascriptSrc'>Javascript is disabled<br>Javascript está desabilitado</script>
-                </body>
-            </html>
+                <html lang='pt-BR'>
+                    <head>
+                        <link rel='icon' href='$icon' type='image/extension' sizes='16x16'>
+                        <link rel='stylesheet' href='$styleSrc'>
+                        <meta charset='UTF-8'>
+                        <meta name='viewport' content='width=device-width, initial-scale=1.00'>
+                        <title>$title</title>
+                    </head>
+                    <body>
+                         <script src='$javascriptSrc'>Javascript is disabled<br>Javascript está desabilitado</script>
+                    </body>
+                </html>
             ";
     }
     function getGitHub($github_url)
