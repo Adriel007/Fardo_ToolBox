@@ -27,14 +27,14 @@ class Fardo_ToolBox
             }
         } else echo "<$tag $attributes>";
     }
-    function defaultHtml($icon, $title, $styleSrc, $javascriptSrc)
+    function defaultHtml($iconSrc, $title, $styleSrc, $javascriptSrc)
     {
         if ($styleSrc == null || $styleSrc == "") $styleSrc = "#";
         if ($javascriptSrc == null || $javascriptSrc == "") $javascriptSrc = "#";
         echo "<!DOCTYPE html>
                 <html lang='pt-BR'>
                     <head>
-                        <link rel='icon' href='$icon' type='image/extension' sizes='16x16'>
+                        <link rel='icon' href='$iconSrc' type='image/extension' sizes='16x16'>
                         <link rel='stylesheet' href='$styleSrc'>
                         <meta charset='UTF-8'>
                         <meta name='viewport' content='width=device-width, initial-scale=1.00'>
