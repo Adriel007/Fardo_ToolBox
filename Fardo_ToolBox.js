@@ -86,5 +86,16 @@ class Fardo_ToolBox {
     isInScreen(element) {
         return (element.scrollTop == window.scrollY && element.scrollLeft == window.scrollX);
     }
+    async fardoIntro() {
+            this.html("div", "id", "fardoIntro", "", document.body);
+            let element = document.getElementById("fardoIntro");
+            this.css(element, "position: fixed; transition: all ease-in-out 1s; width: 100%; height: 100%; background-color: black; color: white; font-weight: bold; font-size: 600%; font-family: consolas; left: 0; top: 0; display: flex; margin: 0; align-items: center; justify-content: center;");
+            await this.typingEffect(element, "", "Fardo Company", "_", 200, true, 300);
+            await this.delay(2500);
+            element.style.opacity = "0";
+            await this.delay(1001);
+            element.remove();
+            return true;
+    }
 };
 const FardoTools = new Fardo_ToolBox;
