@@ -43,6 +43,7 @@ class Fardo_ToolBox {
         }
         if (where == "") document.body.appendChild(el);
         else where.appendChild(el);
+        return el;
     }
     collider(obj_1, obj_2, direction) {
         if (direction.toLowerCase() == "x") {
@@ -62,10 +63,11 @@ class Fardo_ToolBox {
         else return undefined;
     }
     async typingEffect(container = document.body, prefix = "", text = "typing effect", sufix = "", delay = 1000, sufixBlink = true, sufixBlinkDelay = 500) {
+        let blink;
         const blinkEffect = () => {
             let c = 1;
             container.textContent = container.textContent.slice(0, -1);
-            setInterval(() => {
+            blink = setInterval(() => {
                 if (c % 2 == 0) container.textContent = container.textContent.slice(0, -1);
                 else container.textContent += sufix;
                 c++;
@@ -78,7 +80,10 @@ class Fardo_ToolBox {
             container.textContent += text[c] + sufix;
             await this.delay(delay);
         }
-        if (sufixBlink == true) blinkEffect();
+        if (sufixBlink == true) {
+            blinkEffect();
+            return blink;
+        }
     }
     delay(miliseconds) {
         return new Promise(resolve => setTimeout(resolve, miliseconds));
@@ -87,15 +92,24 @@ class Fardo_ToolBox {
         return (element.scrollTop == window.scrollY && element.scrollLeft == window.scrollX);
     }
     async fardoIntro() {
-            this.html("div", "id", "fardoIntro", "", document.body);
-            let element = document.getElementById("fardoIntro");
-            this.css(element, "position: fixed; transition: all ease-in-out 1s; width: 100%; height: 100%; background-color: black; color: white; font-weight: bold; font-size: 600%; font-family: consolas; left: 0; top: 0; display: flex; margin: 0; align-items: center; justify-content: center;");
-            await this.typingEffect(element, "", "Fardo Company", "_", 200, true, 300);
-            await this.delay(2500);
-            element.style.opacity = "0";
-            await this.delay(1001);
-            element.remove();
-            return true;
+        let element = this.html("div", "id", "fardoIntro", "", document.body);
+        let h1 = this.html("h1", "id", "fardoH1", "", element);
+        let h3 = this.html("h3", "id", "fardoH2", "", element);
+        this.css(h3, `
+            color: lime;
+            transition: all ease-in-out .5s;
+        `);
+        this.css(element, "position: fixed; flex-direction: column; transition: all ease-in-out 1s; width: 100%; height: 100%; background-color: black; color: white; font-weight: bold; font-size: 400%; font-family: consolas; left: 0; top: 0; display: flex; margin: 0; align-items: center; justify-content: center;");
+        let blink = await this.typingEffect(h1, "", "Fardo Company", "_", 200, true, 300);
+        await this.delay(1000);
+        clearInterval(blink);
+        if (h1.textContent.includes("_")) h1.textContent = "Fardo Company";
+        await this.typingEffect(h3, "", "O futuro já começou", "_", 200, true, 300);
+        await this.delay(2500);
+        element.style.opacity = "0";
+        await this.delay(1001);
+        element.remove();
+        return true;
     }
 };
 const FardoTools = new Fardo_ToolBox;

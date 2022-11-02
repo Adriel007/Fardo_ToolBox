@@ -15,37 +15,33 @@ class Fardo_ToolBox
     {
         echo "<style>$css</style>";
     }
-    function html($tag, $attributesAndValues, $inner, $close)
+    function html($tag, $attributes, $value, $close)
     {
         if ($close == true) {
-            if (is_array($inner)) {
+            if (is_array($value)) {
                 $string = "";
-                for ($c = 0; $c < count($inner); $c++) $string .= $inner[$c] . "<br>";
-                echo "<$tag $attributesAndValues>$string</$tag>";
+                for ($c = 0; $c < count($value); $c++) $string .= $value[$c] . "<br>";
+                echo "<$tag $attributes>$string</$tag>";
             } else {
-                echo "<$tag $attributesAndValues>$inner</$tag>";
+                echo "<$tag $attributes>$value</$tag>";
             }
-        } else echo "<$tag $attributesAndValues>";
+        } else echo "<$tag $attributes>";
     }
-    function defaultHtml($iconSrc, $title, $styleSrc, $javascriptSrc)
+    function defaultHtml($title, $styleSrc, $javascriptSrc)
     {
-        if ($iconSrc == null || $iconSrc == "") $iconSrc = "#";
-        if ($title == null || $title == "") $title = "Default Title";
         if ($styleSrc == null || $styleSrc == "") $styleSrc = "#";
         if ($javascriptSrc == null || $javascriptSrc == "") $javascriptSrc = "#";
         echo "<!DOCTYPE html>
-                <html lang='pt-BR'>
-                    <head>
-                        <link rel='icon' href='$iconSrc' type='image/extension' sizes='16x16'>
-                        <link rel='stylesheet' href='$styleSrc'>
-                        <meta charset='UTF-8'>
-                        <meta name='viewport' content='width=device-width, initial-scale=1.00'>
-                        <title>$title</title>
-                    </head>
-                    <body>
-                         <script src='$javascriptSrc'>Javascript is disabled<br>Javascript está desabilitado</script>
-                    </body>
-                </html>
+            <html>
+                <head>
+                    <title>$title</title>
+                    <link rel='stylesheet' href='$styleSrc.css'>
+                </head>
+                <body>
+
+                    <script src='$javascriptSrc'>Javascript is disabled<br>Javascript está desabilitado</script>
+                </body>
+            </html>
             ";
     }
     function getGitHub($github_url)
