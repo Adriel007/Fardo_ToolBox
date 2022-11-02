@@ -41,8 +41,7 @@ class Fardo_ToolBox {
                     el.textContent += textContent[c];
             } else el.textContent = textContent;
         }
-        if (where == "") document.body.appendChild(el);
-        else where.appendChild(el);
+        if (where) where.appendChild(el);
         return el;
     }
     collider(obj_1, obj_2, direction) {
@@ -91,20 +90,52 @@ class Fardo_ToolBox {
     isInScreen(element) {
         return (element.scrollTop == window.scrollY && element.scrollLeft == window.scrollX);
     }
+    multicolorText(text = "Hello World!", color = ["red", "green", "blue"]) {
+        let subStr = text.split("");
+        let div = this.html("div", "", "", "", "");
+        let spans = [];
+        this.css(div, `
+        display: flex;
+        width: fit-content;
+        height: fit-content;
+        flex-direction: row;
+        `);
+        for (let c of subStr) spans.push(this.html("span", "name", "fardoColoredText", c, div));
+        if (color.length < subStr.length) {
+            for (let c = 0; true; c++) {
+                if (color.length < subStr.length) color.push(color[c]);
+                else break;
+            } 
+        }
+        for (let c = 0; c < subStr.length; c++) spans[c].style.color = color[c];
+        return div;
+    }
     async fardoIntro() {
         let element = this.html("div", "id", "fardoIntro", "", document.body);
         let h1 = this.html("h1", "id", "fardoH1", "", element);
-        let h3 = this.html("h3", "id", "fardoH2", "", element);
+        let element_2 = this.html("div", "id", "fardoIntroDiv", "", element);
+        let h3 = this.html("h3", "id", "fardoH2", "", element_2);
+        let h3_2 = this.html("h3", "id", "fardoH2_2", "", element_2);
         this.css(h3, `
-            color: lime;
+            color: white;
             transition: all ease-in-out .5s;
         `);
+        this.css(h3_2, `
+            color: lime;
+            transition: all ease-in-out .5s;
+            margin-left: .7em;
+        `);
         this.css(element, "position: fixed; flex-direction: column; transition: all ease-in-out 1s; width: 100%; height: 100%; background-color: black; color: white; font-weight: bold; font-size: 400%; font-family: consolas; left: 0; top: 0; display: flex; margin: 0; align-items: center; justify-content: center;");
+        this.css(element_2, "display: flex; flex-direction: row;");
         let blink = await this.typingEffect(h1, "", "Fardo Company", "_", 200, true, 300);
         await this.delay(1000);
         clearInterval(blink);
         if (h1.textContent.includes("_")) h1.textContent = "Fardo Company";
-        await this.typingEffect(h3, "", "O futuro já começou", "_", 200, true, 300);
+        blink = await this.typingEffect(h3, "", "O futuro", "_", 200, true, 300);
+        await this.delay(1000);
+        clearInterval(blink);
+        if (h3.textContent.includes("_")) h3.textContent = "O futuro";
+        await this.typingEffect(h3_2, "", "já começou", "_", 200, true, 300);
         await this.delay(2500);
         element.style.opacity = "0";
         await this.delay(1001);
