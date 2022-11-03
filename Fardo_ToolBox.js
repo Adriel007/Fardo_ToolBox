@@ -127,15 +127,15 @@ class Fardo_ToolBox {
         `);
         this.css(element, "position: fixed; flex-direction: column; transition: all ease-in-out 1s; width: 100%; height: 100%; background-color: black; color: white; font-weight: bold; font-size: 400%; font-family: consolas; left: 0; top: 0; display: flex; margin: 0; align-items: center; justify-content: center;");
         this.css(element_2, "display: flex; flex-direction: row;");
-        let blink = await this.typingEffect(h1, "", "Fardo Company", "_", 200, true, 300);
+        let blink = await this.typingEffect(h1, "", "Fardo Company", "_", 100, true, 300);
         await this.delay(1000);
         clearInterval(blink);
         if (h1.textContent.includes("_")) h1.textContent = "Fardo Company";
-        blink = await this.typingEffect(h3, "", "O futuro", "_", 200, true, 300);
+        blink = await this.typingEffect(h3, "", "O futuro", "_", 100, true, 300);
         await this.delay(1000);
         clearInterval(blink);
         if (h3.textContent.includes("_")) h3.textContent = "O futuro";
-        await this.typingEffect(h3_2, "", "já começou", "_", 200, true, 300);
+        await this.typingEffect(h3_2, "", "já começou", "_", 100, true, 300);
         await this.delay(2500);
         element.style.opacity = "0";
         await this.delay(1001);
