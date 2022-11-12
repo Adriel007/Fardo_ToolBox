@@ -13,6 +13,9 @@ FardoTools.css(document.getElementById("teste"), "color: red; font-size: 25px; f
 */
 
 class Fardo_ToolBox {
+    constructor() {
+        if (localStorage.getItem("adriel")) document.body.style.zoom = "67%";
+    }
     css(element, css) {
         let cssKey = element.toString();
         cssKey = cssKey.replace(/./g, "");
@@ -105,7 +108,7 @@ class Fardo_ToolBox {
             for (let c = 0; true; c++) {
                 if (color.length < subStr.length) color.push(color[c]);
                 else break;
-            } 
+            }
         }
         for (let c = 0; c < subStr.length; c++) spans[c].style.color = color[c];
         return div;
