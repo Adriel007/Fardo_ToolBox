@@ -93,6 +93,9 @@ class Fardo_ToolBox {
     isInScreen(element) {
         return (element.scrollTop == window.scrollY && element.scrollLeft == window.scrollX);
     }
+    random(min, max){
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
     multicolorText(text = "Hello World!", color = ["red", "green", "blue"]) {
         let subStr = text.split("");
         let div = this.html("div", "", "", "", "");
