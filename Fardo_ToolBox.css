@@ -1,3 +1,8 @@
+:root {
+  --FardoTools-primary-color: rgb(34, 139, 34);
+  --FardoTools-secundary-color: rgb(95, 133, 117);
+  --FardoTools-terciary-color: rgb(40, 40, 43);
+}
 /*---------------------------------------------------------------------*/
 .FardoTools-square {
   width: 50px;
