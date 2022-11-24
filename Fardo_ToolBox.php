@@ -54,7 +54,7 @@ class Fardo_ToolBox
             $data = curl_exec($ch);
             curl_close($ch);
             return $data;
-        } catch (Exception) {
+        } catch (Exception $ch) {
             throw "Error on request GitHub";
         }
     }
