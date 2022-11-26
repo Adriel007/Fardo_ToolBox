@@ -34,7 +34,7 @@ class Fardo_ToolBox {
     }
     html(tag, attr, attrValues, textContent, where) {
         let el = document.createElement(tag);
-        if ((attr != "" && attrValues != "") || attr != null && attrValues != null) {
+        if ((attr != "" && attrValues != "") && (attr != null && attrValues != null)) {
             if (Array.isArray(attr)) {
                 for (let c = 0; c < attr.length; c++)
                     el.setAttribute(attr[c], attrValues[c]);
