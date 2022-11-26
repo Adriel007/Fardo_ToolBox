@@ -34,16 +34,16 @@ class Fardo_ToolBox {
     }
     html(tag, attr, attrValues, textContent, where) {
         let el = document.createElement(tag);
-        if (attr != "" && attrValues != "") {
+        if ((attr != "" && attrValues != "") || attr != null && attrValues != null) {
             if (Array.isArray(attr)) {
                 for (let c = 0; c < attr.length; c++)
                     el.setAttribute(attr[c], attrValues[c]);
             } else el.setAttribute(attr, attrValues);
-            if (Array.isArray(textContent)) {
-                for (let c = 0; c < textContent.length; c++)
-                    el.textContent += textContent[c];
-            } else el.textContent = textContent;
         }
+        if (Array.isArray(textContent)) {
+            for (let c = 0; c < textContent.length; c++)
+                el.textContent += textContent[c];
+        } else el.textContent = textContent;
         if (where) where.appendChild(el);
         return el;
     }
