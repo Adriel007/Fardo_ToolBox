@@ -122,13 +122,20 @@ class Fardo_ToolBox {
         let element_2 = this.html("div", "id", "fardoIntroDiv", "", element);
         let h3 = this.html("h3", "id", "fardoH2", "", element_2);
         let h3_2 = this.html("h3", "id", "fardoH2_2", "", element_2);
+        this.css(h1, `
+            color: white;
+            transition: all ease-in-out .5s;
+            font-size: 1.5em;
+        `);
         this.css(h3, `
             color: white;
             transition: all ease-in-out .5s;
+            font-size: 1em;
         `);
         this.css(h3_2, `
             color: lime;
             transition: all ease-in-out .5s;
+            font-size: 1em;
             margin-left: .7em;
         `);
         this.css(element, "position: fixed; flex-direction: column; transition: all ease-in-out 1s; width: 100%; height: 100%; background-color: black; color: white; font-weight: bold; font-size: 400%; font-family: consolas; left: 0; top: 0; display: flex; margin: 0; align-items: center; justify-content: center;");
